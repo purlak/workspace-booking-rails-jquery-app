@@ -19,6 +19,6 @@
 
 <p><%= link_to "1.Book a new workspace", buildings_path %></p>
 
-<p><%= link_to "2.View reserved workspaces", user_bookings_path(@user.id)%></p>
+<p><%= link_to "2.View reserved workspaces", user_bookings_path(@user.id), class: "all_bookings"%></p>
 
 <p> <a href="/logout">3. Logout</a></p>
