@@ -1,0 +1,23 @@
+<h1>User Signup Form </h1>
+<br>
+<%= render partial: "application/errors", locals: {errors: @user.errors} %>
+
+<%= form_for(@user) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :age %>
+    <%= f.number_field :age %>
+    
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+    
+    <%= f.label :password %>
+    <%= f.password_field :password%>
+   
+    <%= f.label :admin %>
+    <%= f.check_box :admin %>
+   
+    <%= f.submit  "Create User"%>
+<% end %>
+

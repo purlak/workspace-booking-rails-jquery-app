@@ -1,0 +1,17 @@
+<h1>Make a new booking</h1>
+
+<%= form_for [@workspace, @booking] do |f| %>
+
+    <%= f.label :Date %>
+    <%= f.date_field :booking_date, min: Date.tomorrow%>
+
+    <%= f.label :Time %>
+    <%= f.time_field :booking_time %>
+
+     <%= f.label :Duration %>
+    <%= f.number_field :booking_duration, min: 1, max: 24%> hours 
+   
+     <%= f.hidden_field :workspace_id, :value => @workspace.id %>
+    
+    <%= f.submit %>
+<% end %>

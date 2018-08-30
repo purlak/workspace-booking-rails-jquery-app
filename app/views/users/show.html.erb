@@ -1,0 +1,24 @@
+
+<h1>Welcome <%= @user.name%>!</h1>
+
+<h4>Email: <%= @user.email%></h4>
+
+<% if @user.admin %>
+    <h4> Status: ADMIN</h4>
+    <br/>
+    <h3>Admin-only Actions:</h3>
+    <p> <a href="/buildings/new">1. Add a new location/building</a></p>
+    <p> <a href="/workspaces/new">2. Add a new workspace</a></p>
+
+<% else %>
+    <h4> Status: NON-ADMIN</h4>
+<% end %>
+<br>
+
+<h3>User Bookings:</h3>
+
+<p><%= link_to "1.Book a new workspace", buildings_path %></p>
+
+<p><%= link_to "2.View reserved workspaces", user_bookings_path(@user.id)%></p>
+
+<p> <a href="/logout">3. Logout</a></p>

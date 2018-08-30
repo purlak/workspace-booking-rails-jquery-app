@@ -1,0 +1,17 @@
+<h3> <%= @user.name%>'s bookings:</h3>
+
+<% if @user.bookings.count >0%>
+    <% @user.bookings.each do |booking|%>
+        <ul>
+            <li> Booking Location: <%= booking.workspace.building.location_name %> - Booking Date: <%= booking.booking_date%> - Start Time: <%= booking.booking_time%>:00  -  Duration: <%= booking.booking_duration%> hours  
+            </li>
+        </ul>
+    <% end %>
+
+<%else%>
+    <p>You have no bookings currently.</p>
+    
+<%end%>
+<br/>
+<p><%= link_to "Book a new workspace", buildings_path %></p>
+<p><%= link_to "Go Back", user_path(@user.id) %></p>

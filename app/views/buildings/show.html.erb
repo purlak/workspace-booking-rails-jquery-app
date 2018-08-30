@@ -1,0 +1,16 @@
+<h1>Building-Location Information </h1>
+
+<h3>Location: <%= @building.location_name%></h3>
+<h4>Address: <%= @building.address %></h4>
+
+<% @building.workspaces.sort.each do |workspace| %>
+    <ul>
+    <li><%= workspace.workspace_type %> - 
+        <% if workspace.availability != false %>
+            <%= link_to "Available", new_workspace_booking_path(workspace.id) %>
+        <% end %>
+    </li>
+    </ul>    
+<% end %>
+
+<p><%= link_to "Go Back", user_path(@user.id) %></p>

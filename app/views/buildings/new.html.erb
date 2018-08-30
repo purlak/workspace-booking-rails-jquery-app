@@ -1,0 +1,13 @@
+<h1>Add a new building/location</h1>
+<%= render partial: "application/errors", locals: {errors: @building.errors} %>
+
+<%= form_for @building do |f| %>
+
+    <%= f.label :location_name %>
+    <%= f.text_field :location_name%>
+
+    <%= f.label :address %>
+    <%= f.text_field :address%>
+   
+    <%= f.submit "Add Location"%>
+<% end %>

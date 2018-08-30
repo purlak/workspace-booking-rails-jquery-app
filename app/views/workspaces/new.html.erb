@@ -1,0 +1,16 @@
+<h1>Create a new workspace</h1>
+
+<%= render partial: "application/errors", locals: {errors: @workspace.errors} %>
+
+<%= form_for @workspace do |f| %>
+
+    <%= f.label :workspace_type %>
+    <%= f.select :workspace_type, [ 'Desk','Small Conference Room', 'Large Conference Room' ], :prompt => 'Select One' %>
+
+    <%= f.label :Building %>
+    <%= f.collection_select :building_id, Building.all, :id, :location_name, :prompt => 'Select One', required: true %>
+
+    <%= f.submit %>
+<% end %>
+
+<p><%= link_to "Go Back", user_path(@user.id) %></p>
