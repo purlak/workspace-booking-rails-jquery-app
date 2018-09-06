@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
-    before_action :current_user
+    before_action :current_user, 
+    #before_action :set_booking, only: [:show]
     
     def index 
         @bookings = Booking.all
@@ -31,6 +32,10 @@ class BookingsController < ApplicationController
     
     def show
             @booking = Booking.find_by(:id => params[:id])
+            respond_to do |f|
+                f.html
+                f.json {render json: @booking}
+            end 
     end 
     
     private
@@ -38,5 +43,7 @@ class BookingsController < ApplicationController
     def booking_params
         params.require(:booking).permit(:booking_date, :booking_time, :booking_duration, :workspace_id, :user_id)
     end 
+    
+    
     
 end
