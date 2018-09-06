@@ -1,20 +1,19 @@
-
 $(() => {
     bindClickHandlers ()  
 })
 
-const bindClickHandlers = () => {
+var bindClickHandlers = () => {
     $('.all_bookings').on('click', function(e)  {
         e.preventDefault()
-        history.pushState(null, null, "bookings")
+//        history.pushState(null, null, "bookings")
         fetch(`${this.href}.json`)
          .then((res) => res.json())
          .then(data => {
-            $('#app-container').html(' ')
+            $('#reserved-bookings').html(' ')
             data.forEach((b) => {
                 let newBooking = new Booking(b)
                 let bHtml = newBooking.formatIndex()
-                $('#app-container').append(bHtml)
+                $('#reserved-bookings').append(bHtml)
                 
             })
         })
@@ -32,9 +31,11 @@ function Booking(booking) {
 Booking.prototype.formatIndex = function() {    
 
     let bookingHtml = `
-        <a href="/bookings/%{this.id}"<h3>${this.booking_date}</h3></a>
-        <h3>${this.booking_time}</h3>
-        <h3>${this.booking_duration}</h3>
-    `
+
+        <h4>Booking Date: ${this.booking_date} at ${this.booking_time}:00</h3>
+        <h4>Booking Duration: ${this.booking_duration} Hour(s)</h3>
+        <h4>-----------------------</h4>
+    `   
+    
     return bookingHtml
 }
