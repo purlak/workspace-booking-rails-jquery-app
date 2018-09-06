@@ -11,3 +11,15 @@
    
     <%= f.submit "Add Location"%>
 <% end %>
+
+<br/>
+<h3> List of all Buildings/Locations</h3>
+
+<% @buildings.each do |building|%>
+    <ul>
+        <li> <%= link_to building.location_name, building_path(building)%> - <%= building.address%> </li>
+    </ul>
+<% end %>
+
+<br/>
+<p><%= link_to "Go Back", user_path(@user.id) %></p>

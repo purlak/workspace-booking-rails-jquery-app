@@ -1,11 +1,11 @@
 $(() => {
-    bindClickHandlers ()  
+    bindBookingClickHandlers ()  
 })
 
-var bindClickHandlers = () => {
+var bindBookingClickHandlers = () => {
+    //console.log('bind click handlers in booking.js')
     $('.all_bookings').on('click', function(e)  {
         e.preventDefault()
-//        history.pushState(null, null, "bookings")
         fetch(`${this.href}.json`)
          .then((res) => res.json())
          .then(data => {
@@ -39,3 +39,11 @@ Booking.prototype.formatIndex = function() {
     
     return bookingHtml
 }
+
+Booking.prototype.formatShow = function() {
+    let bookingHtml = ` 
+    <h4>Booking Date: ${this.booking_date}</h4>
+`
+    return bookingHtml
+}
+

@@ -4,7 +4,6 @@ class BookingsController < ApplicationController
     
     def index 
         @bookings = Booking.all
-        #@user = current_user
         respond_to do |f|
             f.html
             f.json {render json: @bookings}

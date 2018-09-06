@@ -1,5 +1,5 @@
 <h1>Building-Location Information </h1>
-
+<div class="building-show">
 <h3>Location: <%= @building.location_name%></h3>
 <h4>Address: <%= @building.address %></h4>
 
@@ -12,5 +12,7 @@
     </li>
     </ul>    
 <% end %>
+</div>
 
 <p><%= link_to "Go Back", user_path(@user.id) %></p>
+<button class="next" id="<%=@building.id%>">Next</button>
