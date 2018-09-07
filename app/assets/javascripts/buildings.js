@@ -37,17 +37,17 @@ var bindBuildingClickHandlers = () => {
                 let buildingHtml = newBuilding.formatIndex()
                
                 $('.building-show').append(buildingHtml)
-                
+                $('button').attr("id", nextId);
             //    })
             })
     })
     
-    $('.next-building').on('click', function(e){
-        let nextId=+($(this).attr("id")) + 1
-        fetch (`/buildings/${nextId}.json`)
-        
-        
-    })
+//    $('.next-building').on('click', function(e){
+//        let nextId=+($(this).attr("id")) + 1
+//        fetch (`/buildings/${nextId}.json`)
+//        
+//        
+//    })
 }
 
 function Building(building) {
@@ -60,13 +60,17 @@ function Building(building) {
 Building.prototype.formatIndex = function() {    
     let workspacesHtml = ``
         this.workspaces.forEach((w) => {
-        workspacesHtml += `<h4>Workspace Type: ${w.workspace_type}</h4>`
-    })
+        workspacesHtml += `<li> ${w.workspace_type} - <a href="/workspaces/${w.id}/bookings/new">Available</a></li>`
+        })
+    //debugger
     
-    let buildingHtml = `
-        <h4>Building Location: ${this.location_name}, ${this.address}</h3>  
-        <button class="next">Next</button>
-    `  
+    let buildingHtml = `  
+        <h3>Location: ${this.location_name}</h3>
+        <h4>Address: ${this.address}</h4>
+        <ul>
+            ${workspacesHtml}     
+        </ul>
+`  
     return buildingHtml
     
 }
