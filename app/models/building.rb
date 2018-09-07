@@ -7,4 +7,7 @@ class Building < ApplicationRecord
         self.order(location_name: :asc )   
     end 
     
+    def next 
+        self.where("id > ", id).first
+    end 
 end

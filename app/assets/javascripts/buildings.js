@@ -25,9 +25,9 @@ var bindBuildingClickHandlers = () => {
             nextId = ids[0]
              
          }
-             
         //console.log('making request')
          fetch(`/buildings/${nextId}.json`)
+            
          .then((res) => res.json())
          .then(building => {
             $('.building-show').html(' ')
@@ -40,6 +40,13 @@ var bindBuildingClickHandlers = () => {
                 
             //    })
             })
+    })
+    
+    $('.next-building').on('click', function(e){
+        let nextId=+($(this).attr("id")) + 1
+        fetch (`/buildings/${nextId}.json`)
+        
+        
     })
 }
 
@@ -57,14 +64,16 @@ Building.prototype.formatIndex = function() {
     })
     
     let buildingHtml = `
-        <h4>Building Location: ${this.location_name}, ${this.address}</h3>    `  
+        <h4>Building Location: ${this.location_name}, ${this.address}</h3>  
+        <button class="next">Next</button>
+    `  
     return buildingHtml
+    
 }
 
-Building.prototype.formatShow=function(){
-    let buildingHtml = ` 
-    <h4>Booking Date: ${this.booking_date}</h4>
-    <button class="next-booking">Next</button>
-`
-    return bookingHtml
-}
+//Building.prototype.formatShow=function(){
+//    let buildingHtml = ` 
+//    <h4>Booking Date: ${this.booking_date}</h4>
+//`
+//    return bookingHtml
+//}

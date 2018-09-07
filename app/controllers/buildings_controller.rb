@@ -39,6 +39,10 @@ class BuildingsController < ApplicationController
         render json: Building.all.map{|b| b.id}
     end
     
+    def next 
+        
+    end 
+    
     private
     
     def building_params

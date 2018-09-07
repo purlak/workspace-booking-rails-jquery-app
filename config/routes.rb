@@ -28,5 +28,6 @@ Rails.application.routes.draw do
     get 'logout' => 'sessions#logout'
 
     get '/building_ids', to: 'buildings#ids'
+    #get 'buildings/:id/next', to: 'buildings#next'
     
 end
