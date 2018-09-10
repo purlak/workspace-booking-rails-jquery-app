@@ -75,10 +75,11 @@ var bindBuildingFormClickHandlers = () => {
         type: "POST",
         dataType: "json",
         success: function(data) {
-           
+           //debugger
             var location_name = data.location_name
             var address = data.address
-            let newHtml = `<a href="/buildings"> ${location_name} - ${address}`
+            let newHtml = `<a href="/buildings/${data.id}"> ${location_name}</a> - ${address} <br/>`
+            
             //debugger
              $(".loc").append(newHtml)
             
