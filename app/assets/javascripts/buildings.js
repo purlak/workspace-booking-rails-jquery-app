@@ -79,7 +79,7 @@ var bindBuildingFormClickHandlers = () => {
             var location_name = data.location_name
             var address = data.address
             let newHtml = `<a href="/buildings"> ${location_name} - ${address}`
-            debugger
+            //debugger
              $(".loc").append(newHtml)
             
         },  
