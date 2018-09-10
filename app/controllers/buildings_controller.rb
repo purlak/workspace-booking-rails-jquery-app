@@ -15,15 +15,33 @@ class BuildingsController < ApplicationController
     def new
         @building = Building.new
         @buildings = Building.all.sort_alphabetically
+        #render 'buildings/new', :layout => false
+        
     end 
     
     def create
         @building =  Building.create(building_params) 
-        if @building.save
-            redirect_to @building
-        else 
-            render :new 
-        end 
+        
+        respond_to do |f|
+            if @building.save
+                f.html { redirect_to @building, notice: 'Building was successfully created.' }
+                f.json { render :show, status: :created, location: @building }
+            else
+                f.html { render :new }
+                f.json { render json: @building.errors, status: :unprocessable_entity }
+            end
+        end
+         
+        #if @building.save
+            #redirect_to @building
+        #    respond_to do |f|
+        #        f.html
+        #        f.json {render json: @building}
+        #    end 
+       
+        #else 
+        #    render :new 
+        #end 
     end 
     
     def show
