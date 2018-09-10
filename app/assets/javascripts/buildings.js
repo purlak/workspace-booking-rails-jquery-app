@@ -67,22 +67,31 @@ Building.prototype.formatIndex = function() {
 var bindBuildingFormClickHandlers = () => {
 
    $(".add-location").on("submit", function(e) {
-    e.preventDefault()   
+    //e.preventDefault()   
+       
     $.ajax($(this).attr('action'),{
        
-        data: $(this).serialize(),
+        data: $(this).serialize(),  
         type: "POST",
         dataType: "json",
         success: function(data) {
-            //var $ol = $("div.comments ol")
-            //debugger
-            $(document).body.appendChild(data)
-        },
+           
+            var location_name = data.location_name
+            var address = data.address
+            let newHtml = `<a href="/buildings"> ${location_name} - ${address}`
+            debugger
+             $(".loc").append(newHtml)
+            
+        },  
         error: function (data) {
             console.log (data)
         }
         
     });
+
     e.preventDefault(); 
 });
+  
 }
+
+

@@ -1,4 +1,4 @@
-<div class="comments">
+
 <h1>Add a new building/location</h1>
 <%= render partial: "application/errors", locals: {errors: @building.errors} %>
 
@@ -26,11 +26,16 @@
 
 <% @buildings.each do |building|%>
     <ul>
-        <li> <%= link_to building.location_name, building_path(building)%> - <%= building.address%> </li>
+        
+        <li>  
+            <%= link_to building.location_name, building_path(building)%> - <%= building.address %> 
+            
+        </li>
+       
     </ul>
+     
 <% end %>
-
+<div class="loc"></div>
 
 <br/>
 <p><%= link_to "Go Back", user_path(@user.id) %></p>
-</div>
