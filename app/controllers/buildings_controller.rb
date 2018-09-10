@@ -1,7 +1,8 @@
 class BuildingsController < ApplicationController
-    before_action :admin_access
+    
     before_action :current_user
-    skip_before_action :admin_access, only: [:index, :show]
+    before_action :admin_access
+    skip_before_action :admin_access, only: [:index, :create, :show]
     
     def index 
         @buildings = Building.all.sort_alphabetically
@@ -14,35 +15,20 @@ class BuildingsController < ApplicationController
     
     def new
         @building = Building.new
+        @user = current_user
         @buildings = Building.all.sort_alphabetically
-        #render 'buildings/new', :layout => false
-        
     end 
     
     def create
+        #admin_access
         @building =  Building.create(building_params) 
-        
-        respond_to do |f|
-            if @building.save
-                f.html { redirect_to @building, notice: 'Building was successfully created.' }
-                f.json { render :show, status: :created, location: @building }
-            else
-                f.html { render :new }
-                f.json { render json: @building.errors, status: :unprocessable_entity }
-            end
+        if @building.save
+            render json: @building, :layout => false
+        else
+            render json: {errors: @building.errors.full_messages}
         end
+    end
          
-        #if @building.save
-            #redirect_to @building
-        #    respond_to do |f|
-        #        f.html
-        #        f.json {render json: @building}
-        #    end 
-       
-        #else 
-        #    render :new 
-        #end 
-    end 
     
     def show
         #@user = current_user

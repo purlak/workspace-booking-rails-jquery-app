@@ -64,18 +64,25 @@ Building.prototype.formatIndex = function() {
 }
 
 // Adding JS to the new building form page 
-
 var bindBuildingFormClickHandlers = () => {
-     $('.add-location').on('click', function(e) {
-         debugger
-         //console.log(5)
-        e.preventDefault()
-         
-         
-        $.ajax({
-            method: "GET",
-            url: this.href
-        }).success(function(response){
+
+   $(".add-location").on("submit", function(e) {
+    e.preventDefault()   
+    $.ajax($(this).attr('action'),{
+       
+        data: $(this).serialize(),
+        type: "POST",
+        dataType: "json",
+        success: function(data) {
+            //var $ol = $("div.comments ol")
+            //debugger
+            $(document).body.appendChild(data)
+        },
+        error: function (data) {
+            console.log (data)
+        }
         
-    })
+    });
+    e.preventDefault(); 
+});
 }

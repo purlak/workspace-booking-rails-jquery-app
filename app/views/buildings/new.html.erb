@@ -1,7 +1,8 @@
+<div class="comments">
 <h1>Add a new building/location</h1>
 <%= render partial: "application/errors", locals: {errors: @building.errors} %>
 
-<%= form_for @building do |f| %>
+<%= form_for @building, remote: true, html: { class: "add-location" } do |f| %>
 
     <%= f.label :location_name %>
     <%= f.text_field :location_name%>
@@ -9,8 +10,16 @@
     <%= f.label :address %>
     <%= f.text_field :address%>
    
-    <%= f.submit "Add Location", :class => "add-location"%>
+    <%= f.submit "Add Location"%>
 <% end %>
+
+<!--
+<form action="/buildings" class="add-location">
+    <input type="text" name="location_name"><br>
+     <input type="text" name="address"><br>
+    <input type="submit" value="Submit">
+</form>
+-->
 
 <br/>
 <h3> List of all Buildings/Locations</h3>
@@ -21,5 +30,7 @@
     </ul>
 <% end %>
 
+
 <br/>
 <p><%= link_to "Go Back", user_path(@user.id) %></p>
+</div>
