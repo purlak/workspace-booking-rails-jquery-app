@@ -1,8 +1,10 @@
+// Adding JS to the building show page
 let ids = []
 
 $(() => {
     getBuildingIds()
-    bindBuildingClickHandlers ()  
+    bindBuildingClickHandlers () 
+    bindBuildingFormClickHandlers () 
 })
 
 var getBuildingIds = () => {
@@ -59,4 +61,21 @@ Building.prototype.formatIndex = function() {
 `  
     return buildingHtml
     
+}
+
+// Adding JS to the new building form page 
+
+var bindBuildingFormClickHandlers = () => {
+     $('.add-location').on('click', function(e) {
+         debugger
+         //console.log(5)
+        e.preventDefault()
+         
+         
+        $.ajax({
+            method: "GET",
+            url: this.href
+        }).success(function(response){
+        
+    })
 }
