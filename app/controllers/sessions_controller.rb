@@ -19,10 +19,9 @@ class SessionsController < ApplicationController
            @user = User.find_or_create_by(email: auth['info']['email']) do |u|
                 u.name = auth['info']['name']
                 u.email = auth['info']['email']
-               u.password = auth['uid']
+                u.password = auth['uid']
            end 
-        session[:user_id] = @user.id
-        #binding.pry    
+        session[:user_id] = @user.id  
         redirect_to user_path(@user)
     end
     

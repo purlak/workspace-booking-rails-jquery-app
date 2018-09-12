@@ -47,7 +47,7 @@ User_workspace
     belongs to user
     belongs to workspace
         
-Project Requirements:
+Rails Project Requirements:
 
 X    Use the Ruby on Rails framework.
 
@@ -69,7 +69,7 @@ X    Your application must be, within reason, a DRY (Do-Not-Repeat-Yourself) rai
 
 X    Do not use scaffolding to build your project. Your goal here is to learn. Scaffold is a way to get up and running quickly, but learning a lot is not one of the benefits of scaffolding. That’s why we do not allow the use of scaffolding for projects.
 
-JS Project Requirements
+Rails-JS Project Requirements
 
 X    Must render at least one index page (index resource - 'list of things') via jQuery and an Active Model Serialization JSON Backend. For example, in a blog domain with users and posts, you might display the index of the users posts on the users show page, fetching the posts via an AJAX GET request, with the backend rendering the posts in JSON format, and then appending the posts to the page.
 

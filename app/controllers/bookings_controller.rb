@@ -1,6 +1,5 @@
 class BookingsController < ApplicationController
-    before_action :current_user, 
-    #before_action :set_booking, only: [:show]
+    before_action :current_user 
     
     def index 
         @bookings = Booking.all
@@ -12,12 +11,10 @@ class BookingsController < ApplicationController
     
     def new
         @workspace = Workspace.find_by(id: params[:workspace_id])
-        @booking = Booking.new
-        
+        @booking = Booking.new   
     end 
     
     def create
-       
         @workspace = Workspace.find_by(id: params[:workspace_id])
         @booking = Booking.create(booking_params)
         @booking.user_id = current_user.id
@@ -41,8 +38,6 @@ class BookingsController < ApplicationController
     
     def booking_params
         params.require(:booking).permit(:booking_date, :booking_time, :booking_duration, :workspace_id, :user_id)
-    end 
-    
-    
+    end  
     
 end

@@ -3,7 +3,7 @@
 <% if @user.bookings.count >0%>
     <% @user.bookings.each do |booking|%>
         <ul>
-            <li> Booking Location: <%= booking.workspace.building.location_name %> - Booking Date: <%= booking.booking_date%> - Start Time: <%= booking.booking_time%>:00  -  Duration: <%= booking.booking_duration%> hours  
+            <li> Booking Location: <%= booking.workspace.building.location_name %> - Booking Date: <%= booking.booking_date%> - Start Time: <%= booking.booking_time%>:00  -  Duration: <%= booking.booking_duration%> hours 
             </li>
         </ul>
     <% end %>

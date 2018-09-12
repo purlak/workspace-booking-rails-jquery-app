@@ -6,7 +6,7 @@ class BuildingsController < ApplicationController
     
     def index 
         @buildings = Building.all.sort_alphabetically
-        #@user = current_user
+        
         respond_to do |f|
                 f.html
                 f.json {render json: @buildings}
@@ -20,8 +20,6 @@ class BuildingsController < ApplicationController
     end 
     
     def create
-        #admin_access
-        binding.pry
         @building =  Building.create(building_params) 
         if @building.save
             render json: @building, :layout => false
@@ -32,7 +30,6 @@ class BuildingsController < ApplicationController
          
     
     def show
-        #@user = current_user
         @building = Building.find_by(:id => params[:id])
         respond_to do |f|
                 f.html
@@ -44,8 +41,7 @@ class BuildingsController < ApplicationController
         render json: Building.all.map{|b| b.id}
     end
     
-    def next 
-        
+    def next     
     end 
     
     private

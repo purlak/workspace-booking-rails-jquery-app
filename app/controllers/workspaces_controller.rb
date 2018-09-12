@@ -8,25 +8,21 @@ class WorkspacesController < ApplicationController
     end 
     
     def new
-       # @@user = current_user
         @workspace = Workspace.new
     end 
     
     def create
-            @workspace = Workspace.new(workspace_params)# 
-            @workspace.availability = true
+        @workspace = Workspace.new(workspace_params)# 
+        @workspace.availability = true
        
-            if @workspace.save
-                redirect_to building_path(@workspace.building_id)     
-        
-            else 
-                render :new 
-            end
-
+        if @workspace.save
+            redirect_to building_path(@workspace.building_id)     
+        else 
+            render :new 
+        end
     end 
     
-    def show
-        
+    def show     
     end 
     
     private

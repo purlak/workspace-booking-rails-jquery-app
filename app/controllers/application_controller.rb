@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :null_session
-    def index 
-        
+    
+    def index     
     end 
     
     def current_user
@@ -18,6 +18,5 @@ class ApplicationController < ActionController::Base
         if !current_user.admin
             redirect_to current_user
         end 
-    end 
-    
+    end   
 end

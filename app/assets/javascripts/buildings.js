@@ -1,4 +1,6 @@
-// Adding JS to the building show page
+// Adding JS to the building show page (next button) as well as new building form submission (to make objects appear without requiring a page refresh)
+
+// Adding Next button to building show page 
 let ids = []
 
 $(() => {
@@ -64,6 +66,7 @@ Building.prototype.formatIndex = function() {
 }
 
 // Adding JS to the new building form page 
+
 var bindBuildingFormClickHandlers = () => {
 
    $(".add-location").on("submit", function(e) {
