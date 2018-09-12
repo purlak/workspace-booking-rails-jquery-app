@@ -2,7 +2,7 @@ class BuildingsController < ApplicationController
     
     before_action :current_user
     before_action :admin_access
-    skip_before_action :admin_access, only: [:index, :create, :show]
+    skip_before_action :admin_access, only: [:index, :show]
     
     def index 
         @buildings = Building.all.sort_alphabetically
@@ -21,6 +21,7 @@ class BuildingsController < ApplicationController
     
     def create
         #admin_access
+        binding.pry
         @building =  Building.create(building_params) 
         if @building.save
             render json: @building, :layout => false

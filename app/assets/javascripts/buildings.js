@@ -26,7 +26,7 @@ var bindBuildingClickHandlers = () => {
              
          }
         
-         fetch(`/buildings/${nextId}.json`)
+         fetch(`/buildings/${nextId}.json`) //fetch request to show
             
          .then((res) => res.json())
          .then(building => {
@@ -76,12 +76,14 @@ var bindBuildingFormClickHandlers = () => {
         dataType: "json",
         success: function(data) {
            //debugger
-            var location_name = data.location_name
-            var address = data.address
-            let newHtml = `<a href="/buildings/${data.id}"> ${location_name}</a> - ${address} <br/>`
-            
-            //debugger
-             $(".loc").append(newHtml)
+            if (typeof data.location_name === "undefined"){
+                return
+            }
+                var location_name = data.location_name
+                var address = data.address
+                let newHtml = `<a href="/buildings/${data.id}"> ${location_name}</a> - ${address} <br/>`
+        
+                $(".loc").append(newHtml)
             
         },  
         error: function (data) {
