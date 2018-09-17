@@ -2,6 +2,8 @@ $(() => {
     bindBookingClickHandlers ()  
 })
 
+//let newData=[]
+//debugger
 var bindBookingClickHandlers = () => {
     //console.log('bind click handlers in booking.js')
     $('.all_bookings').on('click', function(e)  {
@@ -11,7 +13,14 @@ var bindBookingClickHandlers = () => {
          .then((res) => res.json())
          .then(data => {
             $('#reserved-bookings').html(' ')
-            data.forEach((b) => {
+            
+            let newData = data.sort ((a,b) => { 
+                var x = Date.parse(a.booking_date); 
+                var y = Date.parse(b.booking_date); 
+                return x-y;
+            })
+            
+            newData.forEach((b) => {
                 let newBooking = new Booking(b)
                 let bHtml = newBooking.formatIndex()
                 $('#reserved-bookings').append(bHtml)
