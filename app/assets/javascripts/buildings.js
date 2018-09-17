@@ -11,8 +11,8 @@ $(() => {
 
 var getBuildingIds = () => {
     fetch('/building_ids')
-        .then(res => res.json())
-        .then(buildingIds => {
+        .then(res => res.json()) //gets response from the fetch request, response includes headers, status of the request - if it was successful etc. this needs to be parsed for data
+        .then(buildingIds => { //gets data from the response
             //debugger
             ids = buildingIds
         })
@@ -74,7 +74,7 @@ var bindBuildingFormClickHandlers = () => {
        
     $.ajax($(this).attr('action'),{
        
-        data: $(this).serialize(),  
+        data: $(this).serialize(),  // .serialize method from jquery
         type: "POST",
         dataType: "json",
         success: function(data) {

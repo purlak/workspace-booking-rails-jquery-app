@@ -6,6 +6,7 @@ var bindBookingClickHandlers = () => {
     //console.log('bind click handlers in booking.js')
     $('.all_bookings').on('click', function(e)  {
         e.preventDefault()
+       //debugger
         fetch(`${this.href}.json`)
          .then((res) => res.json())
          .then(data => {
